@@ -7,6 +7,8 @@ function pxToVmin(variable) {
 }
 
 module.exports = {
+    // 手动切换暗黑模式
+    darkMode: 'class',
     // tailwind 的应用范围
     content: ['./index.html', './src/**/*.{vue,js}'],
     theme: {
@@ -20,6 +22,7 @@ module.exports = {
             },
             boxShadow: {
                 'l-white': '-10px 0 10px white',
+                'l-zinc': '-10px 0 10px #18181b',
             },
             height: {
                 header: '72px',

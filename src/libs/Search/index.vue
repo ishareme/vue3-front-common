@@ -1,6 +1,6 @@
 <template>
     <div
-        class="relative p-0.5 rounded-xl duration-500 hover:bg-red-200/40 group"
+        class="relative p-0.5 rounded-xl duration-500 border-white dark:border-zinc-200 hover:bg-red-200/40 group"
     >
         <SvgIcon
             class="w-1.5 h-1.5 pcenterY left-2"
@@ -10,7 +10,7 @@
         <input
             v-model="inputValue"
             type="text"
-            class="block w-full h-[44px] text-sm pl-4 outline-none bg-zinc-100 caret-zinc-400 text-zinc-900 tracking-wide font-semibold border rounded-xl border-zinc-100 duration-500 focus:border-red-300 group-hover:bg-white"
+            class="block w-full h-[44px] text-sm pl-4 outline-none bg-zinc-100 dark:bg-zinc-800 caret-zinc-400 text-zinc-900 dark:text-zinc-200 tracking-wide font-semibold border rounded-xl border-zinc-100 dark:border-zinc-700 duration-500 focus:border-red-300 group-hover:bg-white dark:group-hover:bg-zinc-900 dark:group-hover:border-zinc-700"
             placeholder="搜索"
             @keyup="onSearch"
             @focus="onFocus"
@@ -40,7 +40,7 @@
             <div
                 v-if="$slots.dropdown"
                 v-show="isFocus"
-                class="max-h-[368px] w-full text-base overflow-auto bg-white absolute top-[52px] left-0 z-20 p-2 rounded border border-b-zinc-200 duration-200 hover:shadow-2xl"
+                class="max-h-[368px] w-full text-base overflow-auto bg-white dark:bg-zinc-800 absolute top-[52px] left-0 z-20 p-2 rounded border border-b-zinc-200 dark:border-zinc-600 duration-200 hover:shadow-2xl"
             >
                 <slot name="dropdown"></slot>
             </div>

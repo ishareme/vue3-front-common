@@ -15,7 +15,7 @@
                 <div
                     v-show="isVisable"
                     v-bind="$attrs"
-                    class="w-screen bg-white z-50 fixed bottom-0 left-0"
+                    class="w-screen bg-white dark:bg-zinc-800 z-50 fixed bottom-0 left-0"
                 >
                     <slot></slot>
                 </div>

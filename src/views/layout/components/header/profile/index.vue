@@ -2,7 +2,7 @@
     <Popover placement="bottom-left" class="flex items-center">
         <template #reference>
             <div
-                class="relative flex items-center p-0.5 rounded-sm cursor-pointer duration-200 outline-none hover:bg-zinc-100"
+                class="relative flex items-center p-0.5 rounded-sm cursor-pointer duration-200 outline-none hover:bg-zinc-100 dark:hover:bg-zinc-900"
             >
                 <img
                     src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fc-ssl.duitang.com%2Fuploads%2Fblog%2F202104%2F22%2F20210422220415_2e4bd.jpg&refer=http%3A%2F%2Fc-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1675515403&t=3e7768a1fd37e2a38d6343bb5ee73cb9"
@@ -11,7 +11,7 @@
                 <SvgIcon
                     class="h-1.5 w-1.5 ml-0.5"
                     name="down-arrow"
-                    fillClass="fill-zinc-900"
+                    fillClass="fill-zinc-900 dark:fill-zinc-300"
                 />
                 <SvgIcon
                     class="h-1.5 w-1.5 absolute right-[16px] bottom-0"
@@ -24,14 +24,16 @@
             <div
                 v-for="item in profileMenu"
                 :key="item.id"
-                class="flex items-center p-1 cursor-pointer rounded hover:bg-zinc-100/60"
+                class="flex items-center p-1 cursor-pointer rounded hover:bg-zinc-100/60 dark:hover:bg-zinc-800"
             >
                 <SvgIcon
                     :name="item.icon"
                     class="w-1.5 h-1.5 mr-1"
-                    fillClass="fill-zinc-900"
+                    fillClass="fill-zinc-900 dark:fill-zinc-300"
                 />
-                <span class="text-zinc-800 text-sm">{{ item.title }}</span>
+                <span class="text-zinc-800 text-sm dark:text-zinc-300">{{
+                    item.title
+                }}</span>
             </div>
         </div>
     </Popover>
