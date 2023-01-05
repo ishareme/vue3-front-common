@@ -7,6 +7,7 @@
             <!-- 汉堡按钮 -->
             <li
                 class="fixed right-[-1px] top-0 z-20 h-4 px-1 flex items-center bg-white shadow-l-white"
+                @click="onShowPopup"
             >
                 <SvgIcon class="w-1.5 h-1.5" name="hamburger" />
             </li>
@@ -24,7 +25,7 @@
                 :class="{
                     'text-zinc-100': currentCateIndex === index,
                 }"
-                v-for="(item, index) in data"
+                v-for="(item, index) in $store.getters.categorys"
                 :key="item.id"
                 :ref="setItemRef"
                 @click="onItemClick(index)"
@@ -32,24 +33,22 @@
                 {{ item.name }}
             </li>
         </ul>
+
+        <Popup v-model="isPopupVisible">
+            <HMenu @onItemClick="onItemClick" />
+        </Popup>
     </div>
 </template>
 
 <script setup>
 import { ref, onBeforeUpdate, watch } from 'vue';
 import { useScroll } from '@vueuse/core';
-
-defineProps({
-    data: {
-        type: Array,
-        required: true,
-    },
-});
+import HMenu from '../../menu';
 
 // 处理滑块
 const sliderStyle = ref({
     transform: 'translateX(0)',
-    width: '60px',
+    width: '52px',
 });
 // 选中下标
 const currentCateIndex = ref(0);
@@ -61,11 +60,9 @@ const setItemRef = (el) => {
 // 获取滚动容器
 const ulTarget = ref(null);
 // 通过 vueuse -> useScroll 获取响应式的 scroll 数据
-const { x: ulScrollLeft } = useScroll(ulTarget);
-
-const onItemClick = (index) => {
-    currentCateIndex.value = index;
-};
+const scrollData = useScroll(ulTarget);
+console.log('[ scrollData ]', scrollData.arrivedState);
+const { x: ulScrollLeft } = scrollData;
 
 watch(currentCateIndex, (index) => {
     const itemRef = itemRefs[index];
@@ -75,7 +72,6 @@ watch(currentCateIndex, (index) => {
         transform: `translateX(${ulScrollLeft.value + left - 10}px)`,
         width: width + 'px',
     };
-    console.log('[ sliderStyle.value ]', sliderStyle.value);
 });
 
 //数据改变后  dom变化之前触发
@@ -83,6 +79,17 @@ onBeforeUpdate(() => {
     // 因为每次数据改变 都会触发setItemRef方法
     itemRefs = [];
 });
+
+// 控制popup
+const isPopupVisible = ref(false);
+const onShowPopup = () => {
+    isPopupVisible.value = true;
+};
+
+const onItemClick = (index) => {
+    currentCateIndex.value = index;
+    isPopupVisible.value = false;
+};
 </script>
 
 <style lang="scss" scoped></style>
