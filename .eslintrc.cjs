@@ -4,7 +4,7 @@ module.exports = {
     env: {
         // 在 node 环境下启动 ESLint 检测
         node: true,
-        browser: true
+        browser: true,
     },
     extends: ['eslint:recommended', 'plugin:vue/vue3-essential'],
     overrides: [],
@@ -12,7 +12,7 @@ module.exports = {
         parser: '@babel/eslint-parser',
         requireConfigFile: false, // <== ADD THIS
         ecmaVersion: 6,
-        sourceType: 'module'
+        sourceType: 'module',
     },
     plugins: ['vue'],
     // 需要修改的启用规则及其各自的错误级别
@@ -25,17 +25,30 @@ module.exports = {
     rules: {
         'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
         'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
+        'vue/html-self-closing': [
+            'error',
+            {
+                html: {
+                    void: 'always',
+                    normal: 'never',
+                    component: 'always',
+                },
+                svg: 'always',
+                math: 'always',
+            },
+        ],
+        'vue/no-parsing-error': [2, { 'x-invalid-end-tag': false }],
         'space-before-function-paren': 'off',
         'vue/multi-word-component-names': 'off',
         'vue/valid-v-slot': [
             'off',
             {
-                allowModifiers: false
-            }
+                allowModifiers: false,
+            },
         ],
         'comma-dangle': 'off',
         semi: ['error', 'always'],
         indent: ['error', 4],
-        quotes: 'off'
-    }
+        quotes: 'off',
+    },
 };
