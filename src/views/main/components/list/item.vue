@@ -7,6 +7,7 @@
             }"
         >
             <img
+                ref="imgTarget"
                 v-lazy
                 :data-src="
                     isMobileTerminal ? data?.src?.medium : data?.src?.large
@@ -35,6 +36,7 @@
                     icon="download"
                     size="small"
                     iconClass="fill-zinc-900 dark:fill-zinc-200"
+                    @click="onDownload"
                 />
                 <!-- 全屏 -->
                 <HButton
@@ -43,6 +45,7 @@
                     icon="full"
                     size="small"
                     iconClass="fill-zinc-900 dark:fill-zinc-200"
+                    @click="onImgFullscreen"
                 />
             </div>
         </div>
@@ -65,7 +68,11 @@
 <script setup>
 import { randomRGB } from '@/utils/color';
 import { isMobileTerminal } from '@/utils/flexible.js';
-defineProps({
+import { saveAs } from 'file-saver';
+import { Message } from '@/libs';
+import { useFullscreen } from '@vueuse/core';
+import { ref } from 'vue';
+const props = defineProps({
     data: {
         type: Object,
         required: true,
@@ -74,6 +81,18 @@ defineProps({
         type: Number,
     },
 });
+
+const onDownload = () => {
+    /**
+     * 下载的图片链接
+     */
+    Message('success', '图片开始下载');
+    saveAs(props.data?.src?.original);
+};
+
+const imgTarget = ref(null);
+const { enter: onImgFullscreen } = useFullscreen(imgTarget);
+useFullscreen();
 </script>
 
 <style lang="scss" scoped></style>

@@ -11,13 +11,13 @@
         @click.stop="onClick"
     >
         <!-- loading -->
-        <SvgIcon
+        <mSvgIcon
             v-if="loading"
             name="loading"
             class="w-2 h-2 animate-spin mr-1"
         />
         <!-- icon 按钮 -->
-        <SvgIcon
+        <mSvgIcon
             v-if="icon"
             :name="icon"
             class="m-auto"
@@ -64,7 +64,7 @@ const sizeEnum = {
 </script>
 
 <script setup>
-import SvgIcon from '../SvgIcon/index.vue';
+import mSvgIcon from '../SvgIcon/index.vue';
 /**
  * 1. 构建type 风格  和 size 大小可选项
  * 2. 通过props 控制按钮

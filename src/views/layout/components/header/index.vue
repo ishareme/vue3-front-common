@@ -5,13 +5,13 @@
         <div class="flex items-center">
             <img
                 v-lazy
-                class="h-4 cursor-pointer mr-2"
+                class="guide-home h-4 cursor-pointer mr-2"
                 src="https://m.imooc.com/static/wap/static/common/img/logo-small@2x.png"
                 @click="onToHome"
             />
-            <HeaderSearch class="mr-1" />
-            <HeaderTheme class="mr-1" />
-            <HeaderProfile />
+            <HeaderSearch class="guide-search mr-1" />
+            <HeaderTheme class="guide-theme mr-1" />
+            <HeaderProfile class="guide-profile" />
         </div>
     </div>
 </template>

@@ -16,3 +16,13 @@
   bottom: 0;
   margin: auto;
 }
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+}
+// 引导页bug
+div#driver-highlighted-element-stage,
+div#driver-page-overlay {
+  background: transparent !important;
+  outline: 5000px solid rgba(0, 0, 0, 0.75);
+}
