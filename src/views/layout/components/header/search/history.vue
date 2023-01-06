@@ -29,11 +29,18 @@
 
 <script setup>
 import { useStore } from 'vuex';
+import { Confirm } from '@/libs';
 
 const emits = defineEmits(['onItemClick']);
 const store = useStore();
 const onDeleteAllClick = () => {
-    store.commit('search/deleteAllHistory');
+    Confirm('你要删除所有记录吗')
+        .then(() => {
+            store.commit('search/deleteAllHistory');
+        })
+        .catch(() => {
+            console.log('[ 前取消 ]');
+        });
 };
 const onDeleteClick = (index) => {
     store.commit('search/deleteHistory', index);

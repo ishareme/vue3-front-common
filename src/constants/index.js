@@ -128,3 +128,41 @@ export const CATEGORY_NOMAR_DATA = [
     { id: 'sports', name: '运动', urlname: 'sports' },
     { id: 'funny', name: '搞笑', urlname: 'funny' },
 ];
+
+export const THEME_NOMAR_DATA = [
+    {
+        id: 'Art',
+        photo: 'https://images.pexels.com/photos/9890370/pexels-photo-9890370.jpeg?auto=compress&cs=tinysrgb&dpr=1&fit=crop&h=250&w=360',
+        title: '艺术',
+    },
+    {
+        id: 'black theme',
+        photo: 'https://images.pexels.com/photos/1356300/pexels-photo-1356300.jpeg?auto=compress&cs=tinysrgb&dpr=1&fit=crop&h=250&w=360',
+        title: '黑色',
+    },
+    {
+        id: 'cute background',
+        photo: 'https://images.pexels.com/photos/7267852/pexels-photo-7267852.jpeg?auto=compress&cs=tinysrgb&dpr=1&fit=crop&h=250&w=360',
+        title: '可爱背景',
+    },
+    {
+        id: 'Like a breath of fresh air',
+        photo: 'https://images.pexels.com/photos/7412111/pexels-photo-7412111.jpeg?auto=compress&cs=tinysrgb&dpr=1&fit=crop&h=250&w=360',
+        title: '小清新',
+    },
+    {
+        id: 'green',
+        photo: 'https://images.pexels.com/photos/8117889/pexels-photo-8117889.jpeg?auto=compress&cs=tinysrgb&dpr=1&fit=crop&h=250&w=360',
+        title: '绿色',
+    },
+    {
+        id: 'Happy Feet',
+        photo: 'https://images.pexels.com/photos/631988/pexels-photo-631988.jpeg?auto=compress&cs=tinysrgb&dpr=1&fit=crop&h=250&w=360',
+        title: '快乐',
+    },
+    {
+        id: 'Botany',
+        photo: 'https://images.pexels.com/photos/212940/pexels-photo-212940.jpeg?auto=compress&cs=tinysrgb&dpr=1&fit=crop&h=250&w=360',
+        title: '植物',
+    },
+];

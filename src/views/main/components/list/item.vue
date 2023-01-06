@@ -8,7 +8,9 @@
         >
             <img
                 v-lazy
-                :data-src="data?.src?.medium"
+                :data-src="
+                    isMobileTerminal ? data?.src?.medium : data?.src?.large
+                "
                 class="w-full bg-transparent"
                 :style="{
                     height: `${(width / data.width) * data.height}px`,
@@ -62,6 +64,7 @@
 
 <script setup>
 import { randomRGB } from '@/utils/color';
+import { isMobileTerminal } from '@/utils/flexible.js';
 defineProps({
     data: {
         type: Object,

@@ -19,3 +19,10 @@ export const getHint = (q) => {
         },
     });
 };
+
+//获取推荐主题
+export const getThemes = () => {
+    return request({
+        url: '/thems',
+    });
+};

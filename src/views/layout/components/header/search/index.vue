@@ -12,6 +12,8 @@
                         v-show="!inputValue"
                         @on-item-click="onSearchHandle"
                     />
+                    <!-- 主题推荐 -->
+                    <Theme v-show="!inputValue" />
                 </div>
             </template>
         </Search>
@@ -21,6 +23,7 @@
 <script setup>
 import Hint from './hint.vue';
 import History from './history.vue';
+import Theme from './theme.vue';
 import { watch } from 'vue';
 
 import { ref } from 'vue';
@@ -32,6 +35,8 @@ const onSearchHandle = (value) => {
     inputValue.value = value;
     if (value) {
         store.commit('search/addHistory', value);
+        // 触发 searchText 的值变化
+        store.commit('app/changeSearchText', value);
     }
 };
 

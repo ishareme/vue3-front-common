@@ -9,4 +9,5 @@ export default {
         return index;
     },
     historys: (state) => state.search.historys,
+    searchText: (state) => state.app.searchText,
 };

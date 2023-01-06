@@ -1,5 +1,7 @@
 import { defineAsyncComponent } from 'vue';
 
+export { Confirm } from '@/libs/Confirm/index.js';
+
 export default {
     install(app) {
         // 获取当前路径任意文件夹下的 组件

@@ -79,10 +79,18 @@ const restQuery = (newQuery) => {
 watch(
     () => store.getters.currentCategory,
     (currentCategory) => {
-        console.log('[ currentCategory ]', currentCategory);
         restQuery({
             page: 1,
             query: currentCategory.urlname,
+        });
+    }
+);
+watch(
+    () => store.getters.searchText,
+    (value) => {
+        restQuery({
+            page: 1,
+            query: value,
         });
     }
 );
