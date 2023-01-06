@@ -63,7 +63,6 @@ const setItemRef = (el) => {
 const ulTarget = ref(null);
 // 通过 vueuse -> useScroll 获取响应式的 scroll 数据
 const scrollData = useScroll(ulTarget);
-console.log('[ scrollData ]', scrollData.arrivedState);
 const { x: ulScrollLeft } = scrollData;
 
 watch(currentCateIndex, (index) => {

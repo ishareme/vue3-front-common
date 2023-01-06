@@ -3,8 +3,9 @@ import Request from '@/utils/request';
 const request = new Request();
 
 //获取分类列表
-export const getCategory = () => {
+export const getListData = (data) => {
     return request({
-        url: '/category',
+        url: '/search',
+        params: data,
     });
 };

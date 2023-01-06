@@ -28,6 +28,33 @@ class Request {
                 return Promise.reject(error);
             }
         );
+
+        this.service.interceptors.response.use(
+            (response) => {
+                const { status, data } = response;
+                // 盘点当前请求是否成功
+                // 成功返回解析后的数据
+                if (status === 200) {
+                    return data;
+                } else {
+                    return Promise.reject(new Error('接口请求出错'));
+                }
+            },
+            // 请求失败
+            (error) => {
+                // 状态码401的时候token过期
+                if (
+                    error.response &&
+                    error.response.data &&
+                    error.response.data.code === 401
+                ) {
+                    // token过期
+                    // store.dispatch('user/login');
+                }
+                // ElMessage.error(error.message);
+                return Promise.reject(new Error(error));
+            }
+        );
     }
 }
 
