@@ -5,6 +5,7 @@
             :style="{
                 backgroundColor: randomRGB(),
             }"
+            @click="onPinClick"
         >
             <img
                 ref="imgTarget"
@@ -70,8 +71,9 @@ import { randomRGB } from '@/utils/color';
 import { isMobileTerminal } from '@/utils/flexible.js';
 import { saveAs } from 'file-saver';
 import { Message } from '@/libs';
-import { useFullscreen } from '@vueuse/core';
-import { ref } from 'vue';
+import { useElementBounding, useFullscreen } from '@vueuse/core';
+import { ref, computed } from 'vue';
+
 const props = defineProps({
     data: {
         type: Object,
@@ -81,6 +83,7 @@ const props = defineProps({
         type: Number,
     },
 });
+const emits = defineEmits(['click']);
 
 const onDownload = () => {
     /**
@@ -93,6 +96,29 @@ const onDownload = () => {
 const imgTarget = ref(null);
 const { enter: onImgFullscreen } = useFullscreen(imgTarget);
 useFullscreen();
+
+// 跳转记录
+// 图片中心点位置
+// useElementBounding 获取到响应式的数据
+const {
+    x: imgContainerX,
+    y: imgContainerY,
+    width: imgContainerW,
+    height: imgContainerH,
+} = useElementBounding(imgTarget);
+const imgContainerCenter = computed(() => {
+    return {
+        translateX: parseInt(imgContainerX.value + imgContainerW.value / 2),
+        translateY: parseInt(imgContainerY.value + imgContainerH.value / 2),
+    };
+});
+// 进入详情
+const onPinClick = () => {
+    emits('click', {
+        id: props.data.id,
+        location: imgContainerCenter.value,
+    });
+};
 </script>
 
 <style lang="scss" scoped></style>

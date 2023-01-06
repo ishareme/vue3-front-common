@@ -13,19 +13,33 @@
                 :preloading="false"
             >
                 <template v-slot="{ item, width }">
-                    <Item :data="item" :width="width" />
+                    <Item :data="item" :width="width" @click="onPinClick" />
                 </template>
             </Waterfall>
         </Infinite>
+
+        <!-- 详情 -->
+        <transition
+            :css="false"
+            @before-enter="onBeforeEnd"
+            @enter="onEnter"
+            @leave="onLeave"
+        >
+            <Pins v-show="isPinVisible" :id="currentPin.id" />
+        </transition>
     </div>
 </template>
 
 <script setup>
-import Item from './item';
 import { getListData } from '@/api/pexel.js';
 import { ref, watch } from 'vue';
 import { isMobileTerminal } from '@/utils/flexible.js';
 import { useStore } from 'vuex';
+import Pins from '../../../pins/components/pins.vue';
+import Item from './item';
+
+import gsap from 'gsap';
+import { useEventListener } from '@vueuse/core';
 
 let query = {
     query: 'art',
@@ -94,6 +108,54 @@ watch(
         });
     }
 );
+
+const isPinVisible = ref(false);
+const currentPin = ref({});
+const onPinClick = (data) => {
+    console.log('[ data ]', data);
+    if (!data.id) return;
+    // 修改地址 不会刷新
+    history.pushState(null, null, `/pins/${data.id}`);
+    currentPin.value = data;
+    isPinVisible.value = true;
+};
+// 监听浏览器回退按钮事件
+useEventListener(window, 'popstate', () => {
+    isPinVisible.value = false;
+});
+
+const onBeforeEnd = (el) => {
+    gsap.set(el, {
+        scaleX: 0,
+        scaleY: 0,
+        transformOrigin: '0 0',
+        translateX: currentPin.value.location?.translateX,
+        translateY: currentPin.value.location?.translateY,
+        opacity: 0,
+    });
+};
+const onEnter = (el, done) => {
+    gsap.to(el, {
+        duration: 0.3,
+        scaleX: 1,
+        scaleY: 1,
+        translateX: 0,
+        translateY: 0,
+        opacity: 1,
+        onComplete: done,
+    });
+};
+const onLeave = (el, done) => {
+    gsap.to(el, {
+        duration: 0.3,
+        scaleX: 0,
+        scaleY: 0,
+        translateX: currentPin.value.location?.translateX,
+        translateY: currentPin.value.location?.translateY,
+        opacity: 1,
+        onComplete: done,
+    });
+};
 </script>
 
 <style lang="scss" scoped></style>
