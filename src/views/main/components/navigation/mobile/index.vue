@@ -23,14 +23,15 @@
 
             <!-- items -->
             <li
+                v-for="(item, index) in $store.getters.categorys"
                 class="shrink-0 px-1.5 py-0.5 z-10 duration-200 last:mr-4"
                 :class="{
-                    'text-zinc-100': currentCateIndex === index,
+                    'text-zinc-100':
+                        $store.getters.currentCategoryIndex === index,
                 }"
-                v-for="(item, index) in $store.getters.categorys"
-                :key="item.id"
+                :key="`mi-${item.id}`"
                 :ref="setItemRef"
-                @click="onItemClick(index)"
+                @click="onItemClick(item)"
             >
                 {{ item.name }}
             </li>
@@ -46,6 +47,7 @@
 import { ref, onBeforeUpdate, watch } from 'vue';
 import { useScroll } from '@vueuse/core';
 import HMenu from '../../menu';
+import { useStore } from 'vuex';
 
 // 处理滑块
 const sliderStyle = ref({
@@ -53,7 +55,7 @@ const sliderStyle = ref({
     width: '52px',
 });
 // 选中下标
-const currentCateIndex = ref(0);
+const store = useStore();
 let itemRefs = [];
 // 循环的需要用函数接收
 const setItemRef = (el) => {
@@ -65,15 +67,19 @@ const ulTarget = ref(null);
 const scrollData = useScroll(ulTarget);
 const { x: ulScrollLeft } = scrollData;
 
-watch(currentCateIndex, (index) => {
-    const itemRef = itemRefs[index];
-    const { left, width } = itemRef.getBoundingClientRect();
-    sliderStyle.value = {
-        // 滑块的位置 = ul 横向滚动的位置 + 当前元素的left - ul的padding
-        transform: `translateX(${ulScrollLeft.value + left - 10}px)`,
-        width: width + 'px',
-    };
-});
+// watch 监听 gettes 要传函数
+watch(
+    () => store.getters.currentCategoryIndex,
+    (index) => {
+        const itemRef = itemRefs[index];
+        const { left, width } = itemRef.getBoundingClientRect();
+        sliderStyle.value = {
+            // 滑块的位置 = ul 横向滚动的位置 + 当前元素的left - ul的padding
+            transform: `translateX(${ulScrollLeft.value + left - 10}px)`,
+            width: width + 'px',
+        };
+    }
+);
 
 //数据改变后  dom变化之前触发
 onBeforeUpdate(() => {
@@ -87,8 +93,8 @@ const onShowPopup = () => {
     isPopupVisible.value = true;
 };
 
-const onItemClick = (index) => {
-    currentCateIndex.value = index;
+const onItemClick = (item) => {
+    store.commit('app/changeCurrentCategory', item);
     isPopupVisible.value = false;
 };
 </script>

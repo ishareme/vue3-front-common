@@ -19,13 +19,13 @@
             </li>
             <li
                 v-for="(item, index) in $store.getters.categorys"
-                :key="item.id"
-                @click="onItemClick(index)"
+                :key="`p-i${item.id}`"
                 class="shrink-0 px-1.5 py-0 z-10 duration-200 text-zinc-900 dark:text-zinc-500 dark:hover:text-zinc-300 text-base font-bold h-4 leading-4 cursor-pointer rounded mr-1 mb-1 hover:bg-zinc-200 dark:hover:bg-zinc-900"
                 :class="{
                     'text-zinc-900 dark:text-zinc-100/70 bg-zinc-200 dark:bg-zinc-900':
-                        currentCategoryIndex === index,
+                        $store.getters.currentCategoryIndex === index,
                 }"
+                @click="onItemClick(item)"
             >
                 {{ item.name }}
             </li>
@@ -35,15 +35,16 @@
 
 <script setup>
 import { ref } from 'vue';
+import { useStore } from 'vuex';
 
 const isOpenCategory = ref(false);
 const onToggleOpen = () => {
     isOpenCategory.value = !isOpenCategory.value;
 };
 
-const currentCategoryIndex = ref(0);
-const onItemClick = (index) => {
-    currentCategoryIndex.value = index;
+const store = useStore();
+const onItemClick = (item) => {
+    store.commit('app/changeCurrentCategory', item);
 };
 </script>
 

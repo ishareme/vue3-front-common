@@ -3,6 +3,7 @@ import { defineAsyncComponent } from 'vue';
 export default {
     install(app) {
         // 获取当前路径任意文件夹下的 组件
+        // glob 是异步的
         const components = import.meta.glob('@/components/*/index.vue');
         const libs = import.meta.glob('@/libs/*/index.vue');
         for (const [key, value] of [

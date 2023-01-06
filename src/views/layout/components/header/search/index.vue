@@ -1,16 +1,43 @@
 <template>
     <div class="w-full">
-        <Search v-model="inputValue">
+        <Search v-model="inputValue" @search="onSearchHandle">
             <template #dropdown>
-                <div>11111111</div>
+                <div>
+                    <Hint
+                        v-show="inputValue"
+                        :search-text="inputValue"
+                        @on-item-click="onSearchHandle"
+                    />
+                    <History
+                        v-show="!inputValue"
+                        @on-item-click="onSearchHandle"
+                    />
+                </div>
             </template>
         </Search>
     </div>
 </template>
 
 <script setup>
+import Hint from './hint.vue';
+import History from './history.vue';
+import { watch } from 'vue';
+
 import { ref } from 'vue';
+import { useStore } from 'vuex';
 const inputValue = ref('');
+
+const store = useStore();
+const onSearchHandle = (value) => {
+    inputValue.value = value;
+    if (value) {
+        store.commit('search/addHistory', value);
+    }
+};
+
+watch(inputValue, (value) => {
+    console.log('[ inputValue ]', value);
+});
 </script>
 
 <style lang="scss" scoped></style>

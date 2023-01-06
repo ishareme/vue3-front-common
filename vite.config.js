@@ -33,6 +33,13 @@ export default defineConfig({
                 changeOrigin: true,
                 rewrite: (path) => path.replace(/^\/api/, ''),
             },
+            // unsplash
+            '/upapi': {
+                target: 'https://api.unsplash.com/',
+                //跨域
+                changeOrigin: true,
+                rewrite: (path) => path.replace(/^\/upapi/, ''),
+            },
         },
     },
 });

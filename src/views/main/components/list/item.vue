@@ -2,9 +2,13 @@
     <div class="bg-white dark:bg-zinc-900 xl:dark:bg-zinc-800 rounded pb-1">
         <div
             class="relative w-full rounded overflow-hidden cursor-zoom-in group"
+            :style="{
+                backgroundColor: randomRGB(),
+            }"
         >
             <img
-                :src="data?.src?.medium"
+                v-lazy
+                :data-src="data?.src?.medium"
                 class="w-full bg-transparent"
                 :style="{
                     height: `${(width / data.width) * data.height}px`,
@@ -45,7 +49,8 @@
         </p>
         <div class="flex items-center mt-1 px-1">
             <img
-                src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fc-ssl.duitang.com%2Fuploads%2Fblog%2F202104%2F22%2F20210422220415_2e4bd.jpg&refer=http%3A%2F%2Fc-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1675515403&t=3e7768a1fd37e2a38d6343bb5ee73cb9"
+                v-lazy
+                data-src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fc-ssl.duitang.com%2Fuploads%2Fblog%2F202104%2F22%2F20210422220415_2e4bd.jpg&refer=http%3A%2F%2Fc-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1675515403&t=3e7768a1fd37e2a38d6343bb5ee73cb9"
                 class="h-2 w-2 rounded-full"
             />
             <span class="text-sm text-zinc-500 ml-1">{{
@@ -56,6 +61,7 @@
 </template>
 
 <script setup>
+import { randomRGB } from '@/utils/color';
 defineProps({
     data: {
         type: Object,

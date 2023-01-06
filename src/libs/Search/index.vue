@@ -1,5 +1,6 @@
 <template>
     <div
+        ref="containerTarget"
         class="relative p-0.5 rounded-xl duration-500 border-white dark:border-zinc-200 hover:bg-red-200/40 group"
     >
         <SvgIcon
@@ -40,7 +41,7 @@
             <div
                 v-if="$slots.dropdown"
                 v-show="isFocus"
-                class="max-h-[368px] w-full text-base overflow-auto bg-white dark:bg-zinc-800 absolute top-[52px] left-0 z-20 p-2 rounded border border-b-zinc-200 dark:border-zinc-600 duration-200 hover:shadow-2xl"
+                class="max-h-[368px] w-full text-base overflow-auto bg-white dark:bg-zinc-800 absolute top-[60px] left-0 z-20 p-2 rounded border border-b-zinc-200 dark:border-zinc-600 duration-200 hover:shadow-2xl"
             >
                 <slot name="dropdown"></slot>
             </div>
@@ -58,7 +59,7 @@ const EMIT_BLUR = 'blur';
 </script>
 
 <script setup>
-import { useVModel } from '@vueuse/core';
+import { useVModel, onClickOutside } from '@vueuse/core';
 import { ref, watch } from 'vue';
 const props = defineProps({
     modelValue: {
@@ -83,9 +84,15 @@ const onFocus = () => {
     emits(EMIT_FOCUS);
 };
 const onBlur = () => {
-    isFocus.value = false;
     emits(EMIT_BLUR);
 };
+/**
+ * 点击区域外隐藏 dropdown
+ */
+const containerTarget = ref(null);
+onClickOutside(containerTarget, () => {
+    isFocus.value = false;
+});
 const onClear = () => {
     inputValue.value = '';
     emits(EMIT_CLEAR, '');

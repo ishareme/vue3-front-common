@@ -3,13 +3,16 @@ export const PEXEL_API_KEY =
 
 export const MC_ICODE = '59cfb50c02d43309f058bb1fe0a8e3fc';
 
+export const UNSPLASH_API_A_KEY = 'LeCg8k3w_Y1q7obpEiDb7r4kNGja5c7P_yF-QUZf7DU';
+export const UNSPLASH_API_S_KEY = 'SzdWmSaX50iCXicSJlu4KhlYrM6cE5AoUa_ZndXs140';
+
 // pc设备指定宽度
 export const PC_DEVICE_WIDTH = 1280;
 
 export const ALL_CATEGORY_ITEM = {
     id: 'all',
     name: '全部',
-    urlname: 'random',
+    urlname: 'art',
 };
 
 // 极简白
@@ -26,13 +29,7 @@ export const CATEGORY_NOMAR_DATA = [
         id: 'web_app_icon',
         name: 'UI/UX',
         col: 1,
-        urlname: 'web_app_icon',
-    },
-    {
-        id: 'design',
-        name: '平面',
-        col: 1,
-        urlname: 'design',
+        urlname: 'ui design',
     },
     {
         id: 'illustration',
@@ -52,7 +49,7 @@ export const CATEGORY_NOMAR_DATA = [
         id: 'industrial_design',
         name: '工业设计',
         col: 2,
-        urlname: 'industrial_design',
+        urlname: 'industrial design',
     },
     {
         id: 'architecture',
@@ -81,28 +78,28 @@ export const CATEGORY_NOMAR_DATA = [
     {
         id: 'modeling_hair',
         name: '造型/美妆',
-        urlname: 'modeling_hair',
+        urlname: 'modeling hair',
     },
     {
         id: 'diy_crafts',
         name: '手工/布艺',
-        urlname: 'diy_crafts',
+        urlname: 'diy crafts',
     },
     {
         id: 'food_drink',
         name: '美食',
-        urlname: 'food_drink',
+        urlname: 'food drink',
     },
     {
         id: 'travel_places',
         name: '旅行',
-        urlname: 'travel_places',
+        urlname: 'travel places',
     },
     {
         id: 'wedding_events',
         name: '婚礼',
         col: 2,
-        urlname: 'wedding_events',
+        urlname: 'wedding events',
     },
     { id: 'kids', name: '儿童', urlname: 'kids' },
     { id: 'pets', name: '宠物', urlname: 'pets' },
@@ -114,17 +111,17 @@ export const CATEGORY_NOMAR_DATA = [
     {
         id: 'data_presentation',
         name: '数据图',
-        urlname: 'data_presentation',
+        urlname: 'data presentation',
     },
     {
         id: 'cars_motorcycles',
         name: '汽车/摩托',
-        urlname: 'cars_motorcycles',
+        urlname: 'cars motorcycles',
     },
     {
         id: 'film_music_books',
-        name: '电影/图书',
-        urlname: 'film_music_books',
+        name: '电影',
+        urlname: 'film',
     },
     { id: 'tips', name: '生活百科', urlname: 'tips' },
     { id: 'education', name: '教育', urlname: 'education' },

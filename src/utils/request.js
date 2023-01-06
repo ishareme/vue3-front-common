@@ -1,11 +1,19 @@
 import axios from 'axios';
-import { PEXEL_API_KEY, MC_ICODE } from '../constants';
+import { PEXEL_API_KEY, MC_ICODE, UNSPLASH_API_A_KEY } from '../constants';
 
 class Request {
+    type = 'pexel';
     baseURL;
     service = null;
-    constructor(baseURL = import.meta.env.VITE_BASE_API) {
-        this.baseURL = baseURL;
+    constructor(type = 'pexel') {
+        this.type = type;
+        if (this.type === 'pexel') {
+            this.baseURL = import.meta.env.VITE_BASE_API;
+        } else if (this.type === 'unsplash') {
+            this.baseURL = import.meta.env.VITE_UNSPLASH_API;
+        } else {
+            this.baseURL = import.meta.env.VITE_BASE_API;
+        }
         this.service = this.init();
         this.handleRequest();
         return this.service;
@@ -13,13 +21,21 @@ class Request {
     init() {
         return axios.create({
             baseURL: this.baseURL,
-            timeout: 5000,
+            timeout: 8000,
         });
     }
     handleRequest() {
         this.service.interceptors.request.use(
             (config) => {
-                config.headers['Authorization'] = PEXEL_API_KEY;
+                if (this.type === 'pexel') {
+                    config.headers['Authorization'] = PEXEL_API_KEY;
+                } else if (this.type === 'unsplash') {
+                    config.headers[
+                        'Authorization'
+                    ] = `Client-ID ${UNSPLASH_API_A_KEY}`;
+                } else {
+                    config.headers['Authorization'] = '';
+                }
                 config.headers['icode'] = MC_ICODE;
                 config.headers['codetype'] = '1672861859';
                 return config;
