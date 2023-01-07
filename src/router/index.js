@@ -1,11 +1,11 @@
-import { createRouter, createWebHashHistory } from 'vue-router';
+import { createRouter, createWebHistory } from 'vue-router';
 import { isMobileTerminal } from '@/utils/flexible';
-import mobileRouter from './modules/mobile-router';
-import pcRouter from './modules/pc-router';
+import mobileRouter from './modules/mobile-routes';
+import pcRouter from './modules/pc-routes';
 
 // 创建vue-router实例
 const router = createRouter({
-    history: createWebHashHistory(),
+    history: createWebHistory(),
     routes: isMobileTerminal.value ? mobileRouter : pcRouter,
 });
 

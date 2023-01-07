@@ -4,6 +4,7 @@ const request = new Request();
 
 //获取分类列表
 export const getListData = (data) => {
+    data.locale = 'zh-CN';
     return request({
         url: '/search',
         params: data,
@@ -24,5 +25,16 @@ export const getHint = (q) => {
 export const getThemes = () => {
     return request({
         url: '/thems',
+    });
+};
+
+//获取推荐主题
+export const getPhotoById = (id) => {
+    const language = 'zh-CN';
+    return request({
+        url: `/photos/${id}`,
+        params: {
+            locale: language,
+        },
     });
 };

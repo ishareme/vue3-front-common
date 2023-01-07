@@ -25,7 +25,7 @@
             @enter="onEnter"
             @leave="onLeave"
         >
-            <Pins v-show="isPinVisible" :id="currentPin.id" />
+            <Pins v-if="isPinVisible" :currentPin="currentPin" />
         </transition>
     </div>
 </template>
@@ -111,12 +111,13 @@ watch(
 
 const isPinVisible = ref(false);
 const currentPin = ref({});
-const onPinClick = (data) => {
-    console.log('[ data ]', data);
+const currentLocation = ref({});
+const onPinClick = ({ data, location }) => {
     if (!data.id) return;
     // 修改地址 不会刷新
     history.pushState(null, null, `/pins/${data.id}`);
     currentPin.value = data;
+    currentLocation.value = location;
     isPinVisible.value = true;
 };
 // 监听浏览器回退按钮事件
@@ -129,8 +130,8 @@ const onBeforeEnd = (el) => {
         scaleX: 0,
         scaleY: 0,
         transformOrigin: '0 0',
-        translateX: currentPin.value.location?.translateX,
-        translateY: currentPin.value.location?.translateY,
+        translateX: currentLocation.value?.translateX,
+        translateY: currentLocation.value?.translateY,
         opacity: 0,
     });
 };
@@ -150,8 +151,8 @@ const onLeave = (el, done) => {
         duration: 0.3,
         scaleX: 0,
         scaleY: 0,
-        translateX: currentPin.value.location?.translateX,
-        translateY: currentPin.value.location?.translateY,
+        translateX: currentLocation.value?.translateX,
+        translateY: currentLocation.value?.translateY,
         opacity: 1,
         onComplete: done,
     });

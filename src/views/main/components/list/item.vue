@@ -11,7 +11,7 @@
                 ref="imgTarget"
                 v-lazy
                 :data-src="
-                    isMobileTerminal ? data?.src?.medium : data?.src?.large
+                    isMobileTerminal ? data?.src?.large : data?.src?.large2
                 "
                 class="w-full bg-transparent"
                 :style="{
@@ -115,7 +115,7 @@ const imgContainerCenter = computed(() => {
 // 进入详情
 const onPinClick = () => {
     emits('click', {
-        id: props.data.id,
+        data: props.data,
         location: imgContainerCenter.value,
     });
 };
