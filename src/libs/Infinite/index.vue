@@ -43,10 +43,6 @@ const emitLoad = () => {
     // 触发 load，延迟处理，等待 渲染和 useIntersectionObserver 的再次触发
     let timeout = setTimeout(() => {
         // 加载更多的视图可见时  不是加载中 还没加载完  处理加载跟多逻辑
-        console.log('[ isIntersect.value ]', isIntersect.value);
-        console.log('[ !loading.value ]', !loading.value);
-        console.log('[ !props.isFinished ]', !props.isFinished);
-        console.log('[ ------------------------------------- ]');
         if (isIntersect.value && !loading.value && !props.isFinished) {
             loading.value = true;
             emits('onload');
@@ -56,7 +52,6 @@ const emitLoad = () => {
 };
 useIntersectionObserver(loadingTarget, ([{ isIntersecting }]) => {
     isIntersect.value = isIntersecting;
-    console.log('[ isIntersecting ]', isIntersecting);
     emitLoad();
 });
 

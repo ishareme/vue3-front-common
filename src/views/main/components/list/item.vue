@@ -11,7 +11,7 @@
                 ref="imgTarget"
                 v-lazy
                 :data-src="
-                    isMobileTerminal ? data?.src?.large : data?.src?.large2
+                    isMobileTerminal ? data?.src?.large : data?.src?.large2x
                 "
                 class="w-full bg-transparent"
                 :style="{
