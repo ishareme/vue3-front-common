@@ -10,4 +10,7 @@ export default {
     },
     historys: (state) => state.search.historys,
     searchText: (state) => state.app.searchText,
+
+    token: (state) => state.user.token,
+    userInfo: (state) => state.user.userInfo,
 };

@@ -22,6 +22,9 @@ export const THEME_DARK = 'THEME_DARK';
 // 跟随系统
 export const THEME_SYSTEM = 'THEME_SYSTEM';
 
+// 登录方式
+export const LOGIN_TYPE_USERNAME = 'username';
+
 // 初始 category 数据
 export const CATEGORY_NOMAR_DATA = [
     ALL_CATEGORY_ITEM,

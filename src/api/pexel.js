@@ -1,6 +1,6 @@
 import Request from '@/utils/request';
 
-const request = new Request();
+const request = new Request('pexel');
 
 //获取分类列表
 export const getListData = (data) => {

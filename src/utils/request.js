@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { PEXEL_API_KEY, MC_ICODE, UNSPLASH_API_A_KEY } from '../constants';
+import store from '@/store';
 
 class Request {
     type = 'pexel';
@@ -16,6 +17,7 @@ class Request {
         }
         this.service = this.init();
         this.handleRequest();
+        this.handleResponse();
         return this.service;
     }
     init() {
@@ -27,14 +29,23 @@ class Request {
     handleRequest() {
         this.service.interceptors.request.use(
             (config) => {
+                // pexel接口
                 if (this.type === 'pexel') {
                     config.headers['Authorization'] = PEXEL_API_KEY;
-                } else if (this.type === 'unsplash') {
+                }
+                // unsplash接口
+                else if (this.type === 'unsplash') {
                     config.headers[
                         'Authorization'
                     ] = `Client-ID ${UNSPLASH_API_A_KEY}`;
-                } else {
-                    config.headers['Authorization'] = '';
+                }
+                // 默认
+                else {
+                    if (store.getters.token) {
+                        config.headers[
+                            'Authorization'
+                        ] = `Bearer ${store.getters.token}`;
+                    }
                 }
                 config.headers['icode'] = MC_ICODE;
                 config.headers['codetype'] = '1672861859';
@@ -44,7 +55,8 @@ class Request {
                 return Promise.reject(error);
             }
         );
-
+    }
+    handleResponse() {
         this.service.interceptors.response.use(
             (response) => {
                 const { status, data } = response;
@@ -56,7 +68,7 @@ class Request {
                     return Promise.reject(new Error('接口请求出错'));
                 }
             },
-            // 请求失败
+            // 请求失败 非200的状态码
             (error) => {
                 // 状态码401的时候token过期
                 if (
@@ -64,8 +76,8 @@ class Request {
                     error.response.data &&
                     error.response.data.code === 401
                 ) {
-                    // token过期
-                    // store.dispatch('user/login');
+                    // token过期 退出
+                    store.dispatch('user/logout');
                 }
                 // ElMessage.error(error.message);
                 return Promise.reject(new Error(error));
