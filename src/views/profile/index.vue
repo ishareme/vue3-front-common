@@ -9,7 +9,7 @@
             <NavBar
                 sticky
                 v-if="isMobileTerminal"
-                :clickLeft="onNavBarLeftClick"
+                :onLeftClick="onNavbarLeftClick"
                 >个人资料</NavBar
             >
             <!-- pc端标题 -->
@@ -170,7 +170,8 @@ import ChangeAvatar from './components/ChangeAvatar.vue';
 const store = useStore();
 const router = useRouter();
 
-const onNavBarLeftClick = () => {
+const onNavbarLeftClick = () => {
+    store.commit('app/changeRouterType', 'back');
     router.back();
 };
 

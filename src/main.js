@@ -15,4 +15,5 @@ import './permission';
 useRem();
 useTheme();
 
-createApp(App).use(router).use(store).use(libs).use(directives).mount('#app');
+const app = createApp(App);
+app.use(router).use(store).use(libs).use(directives).mount('#app');

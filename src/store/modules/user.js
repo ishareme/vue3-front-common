@@ -38,7 +38,6 @@ export default {
         async profile(context) {
             try {
                 const data = await getProfile();
-                console.log('[ data ]', data);
                 if (!data._id) throw new Error('');
                 context.commit('setUserInfo', data);
                 Message(

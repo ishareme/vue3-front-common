@@ -40,7 +40,7 @@
                     name="password"
                 />
                 <VeeField
-                    type="confirmPassword"
+                    type="password"
                     class="dark:bg-zinc-800 dark:text-zinc-400 border-b-zinc-400 border-b w-full outline-0 pb-1 px-1 text-base focus:border-b-main dark:focus:border-b-zinc-200 xl:default:bg-zinc-900"
                     name="confirmPassword"
                     placeholder="确认密码"

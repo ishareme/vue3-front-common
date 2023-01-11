@@ -8,6 +8,9 @@ export default {
 
         // 搜索文本
         searchText: '',
+
+        // 路由跳转类型
+        routerType: 'none',
     },
     mutations: {
         changeCurrentCategory(state, newCategory) {
@@ -15,6 +18,13 @@ export default {
         },
         changeSearchText(state, newText) {
             state.searchText = newText;
+        },
+
+        /**
+         * 修改 routerType
+         */
+        changeRouterType(state, newType) {
+            state.routerType = newType;
         },
     },
     actions: {},
