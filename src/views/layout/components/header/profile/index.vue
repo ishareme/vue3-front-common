@@ -62,7 +62,7 @@ const profileMenu = [
         id: 1,
         icon: 'vip-profile',
         title: '升级VIP',
-        path: '/profile',
+        path: '/member',
     },
     {
         id: 2,

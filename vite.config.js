@@ -34,7 +34,7 @@ export default defineConfig({
                 rewrite: (path) => path.replace(/^\/api/, ''),
             },
             '/mapi': {
-                target: 'https://imooc-front.lgdsunday.club/api/',
+                target: 'https://api.imooc-front.lgdsunday.club/api/',
                 //跨域
                 changeOrigin: true,
                 rewrite: (path) => path.replace(/^\/mapi/, ''),

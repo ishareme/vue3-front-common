@@ -51,11 +51,13 @@ import { useStore } from 'vuex';
 import { useRouter } from 'vue-router';
 import { useScroll } from '@vueuse/core';
 import { ref, onActivated } from 'vue';
+console.log('[ home组件渲染 ]');
 
 const store = useStore();
 const router = useRouter();
 const onVipClick = () => {
     store.commit('app/changeRouterType', 'push');
+    router.push('/member');
 };
 const onMyClick = () => {
     store.commit('app/changeRouterType', 'push');

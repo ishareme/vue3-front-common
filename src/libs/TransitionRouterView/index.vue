@@ -11,7 +11,10 @@
             <keep-alive :include="virtualTaskStack">
                 <component
                     :is="Component"
-                    :class="{ 'fixed top-0 left-0 w-screen z-50': isAnimation }"
+                    class="fixed top-0 left-0 w-screen"
+                    :class="{
+                        'fixed top-0 left-0 w-screen z-50': isMobileTerminal,
+                    }"
                     :key="$route.fullPath"
                 />
             </keep-alive>
@@ -22,6 +25,7 @@
 <script>
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
+import { isMobileTerminal } from '@/utils/flexible.js';
 
 // 无需监听路由的各种状态（在 PC 端下）
 const NONE = 'none';
@@ -70,7 +74,6 @@ const transitionName = ref('');
 router.beforeEach((to, from) => {
     // 定义当前动画名称
     transitionName.value = props.routerType;
-    console.log('[ transitionName.value ]', transitionName.value);
     if (props.routerType === PUSH) {
         // 入栈
         virtualTaskStack.value.push(to.name);
