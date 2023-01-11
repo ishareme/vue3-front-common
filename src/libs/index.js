@@ -17,7 +17,7 @@ export default {
             const splitArr = key.split('/');
             let componentName = splitArr[splitArr.length - 2];
             // 通过 defineAsyncComponent 异步导入指定路径下的组件
-            if (componentName === 'Button') {
+            if (componentName === 'Button' || componentName === 'Input') {
                 componentName = `H${componentName}`;
             }
             app.component(componentName, defineAsyncComponent(value));

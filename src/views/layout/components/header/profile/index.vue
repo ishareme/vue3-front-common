@@ -82,6 +82,9 @@ const onPopoverClick = (item) => {
         Confirm('你确定要退出登录吗？').then(() => {
             store.dispatch('user/logout');
         });
+        return;
+    } else {
+        router.push(item.path);
     }
 };
 </script>

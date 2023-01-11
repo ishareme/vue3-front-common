@@ -1,19 +1,17 @@
 <template>
     <div>
         <teleport to="body">
-            <transition name="fade" mode="">
+            <transition name="fade">
                 <div
-                    v-show="isVisable"
+                    v-if="isVisable"
                     class="w-screen h-screen bg-zinc-900/80 z-40 fixed top-0 left-0"
                     @click="onMaskClick"
-                >
-                    蒙版
-                </div>
+                ></div>
             </transition>
 
             <transition name="popup-down-up">
                 <div
-                    v-show="isVisable"
+                    v-if="isVisable"
                     v-bind="$attrs"
                     class="w-screen bg-white dark:bg-zinc-800 z-50 fixed bottom-0 left-0"
                 >

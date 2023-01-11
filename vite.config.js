@@ -33,6 +33,12 @@ export default defineConfig({
                 changeOrigin: true,
                 rewrite: (path) => path.replace(/^\/api/, ''),
             },
+            '/mapi': {
+                target: 'https://imooc-front.lgdsunday.club/api/',
+                //跨域
+                changeOrigin: true,
+                rewrite: (path) => path.replace(/^\/mapi/, ''),
+            },
             // unsplash
             '/upapi': {
                 target: 'https://api.unsplash.com/',

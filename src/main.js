@@ -10,6 +10,8 @@ import './styles/index.scss';
 // 导入注册svg
 import 'virtual:svg-icons-register';
 
+import './permission';
+
 useRem();
 useTheme();
 

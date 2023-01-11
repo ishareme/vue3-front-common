@@ -6,6 +6,10 @@ export const MC_ICODE = '59cfb50c02d43309f058bb1fe0a8e3fc';
 export const UNSPLASH_API_A_KEY = 'LeCg8k3w_Y1q7obpEiDb7r4kNGja5c7P_yF-QUZf7DU';
 export const UNSPLASH_API_S_KEY = 'SzdWmSaX50iCXicSJlu4KhlYrM6cE5AoUa_ZndXs140';
 
+// STS 上传数据
+export const OSS_REGION = 'oss-cn-beijing';
+export const OSS_BUCKET = 'imooc-front';
+
 // pc设备指定宽度
 export const PC_DEVICE_WIDTH = 1280;
 

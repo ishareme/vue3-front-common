@@ -9,6 +9,15 @@ export default [
                 name: 'pcMain',
                 component: () => import('@/views/main/index.vue'),
             },
+            {
+                path: '/profile',
+                name: 'profile',
+                component: () => import('@/views/profile/index.vue'),
+                // 标记当前的页面只有用户登录的时候才接入
+                meta: {
+                    user: true,
+                },
+            },
         ],
     },
     {

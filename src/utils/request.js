@@ -6,14 +6,14 @@ class Request {
     type = 'pexel';
     baseURL;
     service = null;
-    constructor(type = 'pexel') {
+    constructor(type = '') {
         this.type = type;
         if (this.type === 'pexel') {
             this.baseURL = import.meta.env.VITE_BASE_API;
         } else if (this.type === 'unsplash') {
             this.baseURL = import.meta.env.VITE_UNSPLASH_API;
         } else {
-            this.baseURL = import.meta.env.VITE_BASE_API;
+            this.baseURL = import.meta.env.VITE_MC_API;
         }
         this.service = this.init();
         this.handleRequest();
