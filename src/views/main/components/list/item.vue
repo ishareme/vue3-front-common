@@ -22,7 +22,9 @@
                 class="hidden opacity-0 w-full h-full bg-zinc-900/50 absolute left-0 top-0 duration-300 group-hover:opacity-100 xl:block"
             >
                 <!-- 分享 -->
-                <HButton class="absolute top-1.5 left-1.5">分享</HButton>
+                <HButton class="absolute top-1.5 left-1.5" @click="onShare"
+                    >分享</HButton
+                >
                 <!-- 点赞 -->
                 <HButton
                     class="absolute top-1.5 right-1.5"
@@ -73,6 +75,7 @@ import { saveAs } from 'file-saver';
 import { Message } from '@/libs';
 import { useElementBounding, useFullscreen } from '@vueuse/core';
 import { ref, computed } from 'vue';
+import { weiboShare } from '@/utils/share.js';
 
 const props = defineProps({
     data: {
@@ -91,6 +94,14 @@ const onDownload = () => {
      */
     Message('success', '图片开始下载');
     saveAs(props.data?.src?.original);
+};
+
+const onShare = () => {
+    weiboShare(
+        props.data?.src?.original,
+        `${location.host}/pins/${props.data?.id}`
+    );
+    console.log('[ loascdad ]');
 };
 
 const imgTarget = ref(null);

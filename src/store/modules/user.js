@@ -1,6 +1,8 @@
 import md5 from 'md5';
 import { login, getProfile, register } from '@/api/sys';
 import { Message } from '@/libs';
+import { LOGIN_TYPE_OAUTG_NO_REGISTER_CODE } from '@/constants';
+
 export default {
     namespaced: true,
     state: () => ({
@@ -23,6 +25,9 @@ export default {
                     ...payload,
                     password: password ? md5(password) : '',
                 });
+                if (data.code === LOGIN_TYPE_OAUTG_NO_REGISTER_CODE) {
+                    return data.code;
+                }
                 context.commit('setToken', data.token);
                 // 获取用户信息
                 context.dispatch('profile');
@@ -31,6 +36,9 @@ export default {
                     code: 204, // 该用户尚未注册，用于第一次扫码登录时
                     token: '63776a8e-dc47-49e6-b63d-e53c51966943',
                 };
+                // if (data.code === LOGIN_TYPE_OAUTG_NO_REGISTER_CODE) {
+                //     return data.code;
+                // }
                 context.commit('setToken', data.token);
                 context.dispatch('profile');
             }

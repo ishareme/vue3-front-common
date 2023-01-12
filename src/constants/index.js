@@ -10,6 +10,19 @@ export const UNSPLASH_API_S_KEY = 'SzdWmSaX50iCXicSJlu4KhlYrM6cE5AoUa_ZndXs140';
 export const OSS_REGION = 'oss-cn-beijing';
 export const OSS_BUCKET = 'imooc-front';
 
+// 没注册的code
+export const LOGIN_TYPE_OAUTG_NO_REGISTER_CODE = 204;
+export const LOGINTYPE_QQ = 'QQ';
+export const LOGINTYPE_WX = 'WX';
+
+// 兔小槽 反馈地址
+export const FEEDBACK_URL = 'https://support.qq.com/product/491970';
+
+// 微博APP Key
+export const WEI_BO_APP_KEY = '3454329089';
+// 微博用户的 UID
+export const WEI_BO_UID = '5984245953';
+
 // pc设备指定宽度
 export const PC_DEVICE_WIDTH = 1280;
 

@@ -55,8 +55,9 @@
             </VeeForm>
             <!-- 第三方登录 -->
             <div class="flex justify-around mt-4">
-                <SvgIcon class="w-4 cursor-pointer" name="qq" />
-                <SvgIcon class="w-4 cursor-pointer" name="wexin" />
+                <!-- <SvgIcon class="w-4 cursor-pointer" name="qq" /> -->
+                <QQLogin />
+                <WeixinLogin />
             </div>
         </div>
 
@@ -70,6 +71,8 @@
 
 <script setup>
 import LoginHeader from '../components/LoginHeader.vue';
+import QQLogin from './QQLogin.vue';
+import WeixinLogin from './WeixinLogin.vue';
 import SliderCaptcha from './SliderCaptcha';
 import {
     Form as VeeForm,

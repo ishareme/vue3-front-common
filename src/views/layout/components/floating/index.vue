@@ -25,6 +25,7 @@
             </template>
             <div
                 class="flex items-center py-1 px-1.5 cursor-pointer rounded hover:bg-zinc-100/60 dark:hover:bg-zinc-800"
+                @click="onFeedbackClick"
             >
                 <SvgIcon
                     name="feedback"
@@ -32,7 +33,7 @@
                     fillClass="fill-zinc-900 dark:fill-zinc-300"
                 />
                 <span class="text-zinc-800 dark:text-zinc-300 text-sm"
-                    >前往博客</span
+                    >前往吐槽</span
                 >
             </div>
         </Popover>
@@ -45,6 +46,8 @@ import Driver from 'driver.js';
 import 'driver.js/dist/driver.min.css';
 import { onMounted } from 'vue';
 import steps from './steps';
+import { FEEDBACK_URL } from '@/constants';
+
 let driver = null;
 onMounted(() => {
     driver = new Driver({
@@ -60,6 +63,10 @@ const onGuideClick = () => {
     driver.defineSteps(steps);
     // 开始
     driver.start();
+};
+
+const onFeedbackClick = () => {
+    window.open(FEEDBACK_URL, '__blank');
 };
 </script>
 

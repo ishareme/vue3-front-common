@@ -135,7 +135,10 @@ const onSubmit = async () => {
         password: regForm.value.password,
     };
     try {
-        await store.dispatch('user/register', payload);
+        await store.dispatch('user/register', {
+            ...payload,
+            ...router.query,
+        });
         await store.dispatch('user/login', {
             ...payload,
             loginType: LOGIN_TYPE_USERNAME,

@@ -46,3 +46,33 @@ export const getSts = () => {
         url: '/user/sts',
     });
 };
+
+// 微信登录前置数据获取
+export const getWeixinLoginData = () => {
+    return request({
+        url: '/sys/wxlogin/data',
+    });
+};
+
+// 微信登录 获取access_token
+export const getWeixinLoginToken = (appid, secret, code) => {
+    return request({
+        url: '/sys/wxlogin/access_token',
+        params: {
+            appid,
+            secret,
+            code,
+        },
+    });
+};
+
+// 微信登录 获取用户信息
+export const getWeixinLoginUserInfo = (token, openid) => {
+    return request({
+        url: '/sys/wxlogin/userinfo',
+        params: {
+            token,
+            openid,
+        },
+    });
+};

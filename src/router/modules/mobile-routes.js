@@ -36,4 +36,9 @@ export default [
             user: true,
         },
     },
+    {
+        path: '/pay/result',
+        name: 'payResult',
+        component: () => import('@/views/pay'),
+    },
 ];
