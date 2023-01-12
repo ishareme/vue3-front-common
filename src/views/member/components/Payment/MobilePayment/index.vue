@@ -26,10 +26,8 @@
                 立即开通
             </HButton>
         </div>
-        <!-- TODO: popup -->
         <Popup v-model="isOpenPopup" class="rounded-tl rounded-tr">
-            <!-- <mobile-pay-select-vue :payData="payData" /> -->
-            <MobilePaymentSelect />
+            <MobilePaymentSelect :payData="payData" />
         </Popup>
     </div>
 </template>
@@ -39,9 +37,16 @@ import { ref } from 'vue';
 import Discounts from '../discounts.vue';
 import MobilePaymentSelect from './MobilePaymentSelect';
 
+defineProps({
+    payData: {
+        required: true,
+        type: Object,
+    },
+});
+
 const isOpenPopup = ref(false);
 const onConfirmClick = () => {
-    isOpenPopup.value = true;
+    isOpenPopup.value = !isOpenPopup.value;
 };
 </script>
 

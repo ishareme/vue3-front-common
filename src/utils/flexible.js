@@ -1,14 +1,18 @@
-import { PC_DEVICE_WIDTH } from '@/constants';
+// import { PC_DEVICE_WIDTH } from '@/constants';
 import { computed } from 'vue';
-import { useWindowSize } from '@vueuse/core';
+// import { useWindowSize } from '@vueuse/core';
 
-const { width } = useWindowSize();
+// const { width } = useWindowSize();
 
 /**
  * 判断当前设备是否为移动设备，判断一句屏幕高度是否小于一个值
  */
 export const isMobileTerminal = computed(() => {
-    return width.value < PC_DEVICE_WIDTH;
+    // 方式1：
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+        navigator.userAgent
+    );
+    // return width.value < PC_DEVICE_WIDTH
 });
 
 /**
