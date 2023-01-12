@@ -17,6 +17,13 @@
   margin: auto;
 }
 
+.lazyEnter {
+  filter: blur(10px);
+}
+.lazyLeave {
+  filter: blur(0);
+}
+
 ::-webkit-scrollbar-thumb {
   border-radius: 10px;
 }

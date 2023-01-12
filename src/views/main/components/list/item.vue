@@ -13,7 +13,7 @@
                 :data-src="
                     isMobileTerminal ? data?.src?.large : data?.src?.large2x
                 "
-                class="w-full bg-transparent"
+                class="w-full bg-transparent transition-all duration-300 group-hover:scale-[1.25]"
                 :style="{
                     height: `${(width / data.width) * data.height}px`,
                 }"

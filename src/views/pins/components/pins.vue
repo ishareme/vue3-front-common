@@ -34,7 +34,7 @@
             <img
                 v-lazy
                 :data-src="
-                    isMobileTerminal ? photo.src?.large : photo.src?.large2
+                    isMobileTerminal ? photo.src?.large : photo.src?.large2x
                 "
                 class="w-screen mb-2 xl:w-3/5 xl:h-full xl:rounded-tl-lg xl:rounded-bl-lg xl:mb-0 xl:object-cover"
             />

@@ -5,11 +5,16 @@ import { useIntersectionObserver } from '@vueuse/core';
 
 const handleLazy = (el) => {
     const imgSrc = el.dataset.src ? el.dataset.src : el.src;
+    el.classList.add('lazyEnter');
     if (el.src) {
         el.src = '';
     }
     const { stop } = useIntersectionObserver(el, ([{ isIntersecting }]) => {
         if (isIntersecting) {
+            el.onload = () => {
+                el.classList.remove('lazyEnter');
+                el.classList.add('lazyLeave');
+            };
             el.src = imgSrc;
             // 停止监听
             stop();

@@ -21,8 +21,6 @@
                 <slot :item="item" :width="columnWidth" :index="index"></slot>
             </div>
         </template>
-        <!-- 加载中 -->
-        <div v-else>加载中...</div>
     </div>
 </template>
 
