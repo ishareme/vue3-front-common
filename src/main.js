@@ -7,7 +7,7 @@ import useTheme from '@/utils/theme';
 import directives from './directives';
 import libs from './libs';
 import './styles/index.scss';
-// 导入注册svg
+// 导入注册svg a
 import 'virtual:svg-icons-register';
 
 import './permission';
