@@ -1,0 +1,1 @@
+import r from"./index-23b7cb19.js";import{o as e,b as o,u as t}from"./index-562e6ff2.js";import"./validate-0e6a3b11.js";const p={__name:"index",setup(a){return(_,c)=>(e(),o(t(r)))}};export{p as default};

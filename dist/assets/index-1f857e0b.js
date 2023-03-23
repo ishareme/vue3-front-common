@@ -1,0 +1,1 @@
+import{ae as d,aq as r}from"./index-562e6ff2.js";import f from"./index-6c15a558.js";const C=(o,n,e,c)=>new Promise((m,a)=>{o&&!n&&(n=o,o="");const s=d(f,{title:o,content:n,cancleText:e,confirmText:c,cancleHandle:()=>{a(new Error("取消按钮点击"))},confirmHandle:()=>{m()},close:()=>{r(null,document.body)}});r(s,document.body)});export{C};

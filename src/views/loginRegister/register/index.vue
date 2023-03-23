@@ -62,9 +62,9 @@
                 <div class="text-center">
                     <a
                         class="text-zinc-400 dark:text-zinc-600 hover:text-zinc-600 dark:hover:text-zinc-400 text-sm duration-300"
-                        href="https://m.imooc.com/newfaq?id=89"
+                        href="#"
                         target="__black"
-                        >注册即同意《慕课网注册协议》</a
+                        >注册即同意《注册协议》</a
                     >
                 </div>
 

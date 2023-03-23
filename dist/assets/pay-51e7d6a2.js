@@ -1,0 +1,1 @@
+import{a0 as u}from"./index-562e6ff2.js";const r=new u,l=()=>r({url:"/user/vip/pay/list"}),n=(s,t,a,e)=>r({url:"/user/alipay",params:{subject:s,totalAmount:t,body:a,isMobile:e}}),i=s=>r({url:"/sys/pay/result",params:{out_trade_no:s}});export{l as a,i as b,n as g};

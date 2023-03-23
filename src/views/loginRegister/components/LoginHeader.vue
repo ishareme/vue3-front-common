@@ -11,7 +11,7 @@
         />
         <img
             class="h-5 absolute top-[5%] left-[50%] translate-x-[-50%]"
-            src="https://m.imooc.com/static/wap/static/common/img/logo-small@2x.png"
+            src="http://div.junzher.net/img/logo.5446419a.png"
         />
     </div>
 </template>

@@ -1,0 +1,1 @@
+import{a0 as r}from"./index-562e6ff2.js";const e=new r("pexel"),o=t=>(t.locale="zh-CN",e({url:"/search",params:t})),n=t=>e({url:"/hint",params:{q:t}}),u=()=>e({url:"/thems"}),c=t=>{const s="zh-CN";return e({url:`/photos/${t}`,params:{locale:s}})};export{c as a,n as b,u as c,o as g};

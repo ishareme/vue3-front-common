@@ -6,7 +6,7 @@
             <img
                 v-lazy
                 class="guide-home h-4 cursor-pointer mr-2"
-                src="https://m.imooc.com/static/wap/static/common/img/logo-small@2x.png"
+                src="http://div.junzher.net/img/logo.5446419a.png"
                 @click="onToHome"
             />
             <HeaderSearch class="guide-search mr-1" />

@@ -90,38 +90,40 @@ watch(isVisible, (val) => {
     nextTick(() => {
         const content = getElementSize(contentTarget.value);
         const reference = getElementSize(referenceTarget.value);
+        /* eslint-disable */
         switch (props.placement) {
-        case TOP_LEFT:
-            contentStyle.value = {
-                top: 0,
-                left: `-${content.width}px`,
-            };
-            break;
-        case TOP_RIGHT:
-            contentStyle.value = {
-                top: 0,
-                left: `${reference.width}px`,
-            };
-            break;
-        case BOTTOM_LEFT:
-            contentStyle.value = {
-                top: `${reference.height}px`,
-                left: `-${content.width}px`,
-            };
-            break;
-        case BOTTOM_RIGHT:
-            contentStyle.value = {
-                top: `${reference.height}px`,
-                left: `${reference.width}px`,
-            };
-            break;
-        default:
-            contentStyle.value = {
-                top: 0,
-                left: `-${content.width}px`,
-            };
-            return;
+            case TOP_LEFT:
+                contentStyle.value = {
+                    top: 0,
+                    left: `-${content.width}px`,
+                };
+                break;
+            case TOP_RIGHT:
+                contentStyle.value = {
+                    top: 0,
+                    left: `${reference.width}px`,
+                };
+                break;
+            case BOTTOM_LEFT:
+                contentStyle.value = {
+                    top: `${reference.height}px`,
+                    left: `-${content.width}px`,
+                };
+                break;
+            case BOTTOM_RIGHT:
+                contentStyle.value = {
+                    top: `${reference.height}px`,
+                    left: `${reference.width}px`,
+                };
+                break;
+            default:
+                contentStyle.value = {
+                    top: 0,
+                    left: `-${content.width}px`,
+                };
+                return;
         }
+        /* eslint-enable */
     });
 });
 </script>

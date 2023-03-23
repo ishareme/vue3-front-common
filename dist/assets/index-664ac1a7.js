@@ -1,0 +1,1 @@
+import{e as t,o as s,a as n,r as o}from"./index-562e6ff2.js";const r={},c={class:"min-w-[180px] bg-white dark:bg-zinc-800 rounded-full shadow flex items-center justify-between px-2 py-1"};function a(e,d){return s(),n("div",c,[o(e.$slots,"default")])}const l=t(r,[["render",a]]);export{l as default};
